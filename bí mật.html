@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đạt Nano</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+		    animation: shine 3s infinite alternate;
+		}
+
+		@keyframes shine {
+ 		   0% { color: #ffffff; text-shadow: 0 0 10px #ffffff; }
+   		 50% { color: #ffb3ff; text-shadow: 0 0 20px #ff66ff; }
+  		  100% { color: #ffffff; text-shadow: 0 0 10px #ffffff; }
+		}
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            z-index: 10;
+            position: relative;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        button:hover {
+        	box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+        transform: scale(1.1);
+        }
+        #yesButton {
+            background-color: #28a745;
+            color: white;
+        }
+        #noButton {
+            background-color: #dc3545;
+            color: white;
+        }
+        body {
+        	background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientMove 10s infinite;
+         }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+            }
+        .star {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: gold;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: float 3s ease-in-out infinite, rotateStar 5s linear infinite, fadeInOut 3s ease-out;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: scale(1) translateY(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.2) translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateStar {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }            
+        .shooting-star {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5);
+            animation: shootingStar 2s ease-out forwards, fadeInOut 2s ease-out;
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(0) translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(300px) translateY(150px) scale(0.5);
+                opacity: 0;
+            }
+        }
+        .cloud {
+            position: absolute;
+            top: 10%;
+            left: 0;
+            width: 160px;
+            height: 60px;
+            background: rgba(200, 200, 255, 0.8);
+            border-radius: 40%;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            animation: cloudMove 20s linear infinite;
+        }
+
+        .cloud:before,
+        .cloud:after {
+            content: '';
+            position: absolute;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .cloud:before {
+            width: 80px;
+            height: 80px;
+            top: -30px;
+            left: 20px;
+        }
+
+        .cloud:after {
+            width: 100px;
+            height: 100px;
+            top: -40px;
+            right: 10px;
+        }
+        @keyframes cloudMove {
+        	0% { transform: translateX(-200px); opacity: 0.8; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100vw); opacity: 0.8; }
+        
+       }
+        .cloud:nth-child(2) {
+            top: 20%;
+            left: -100px;
+            animation-delay: 5s;
+            opacity: 0.9;
+        }
+
+        .cloud:nth-child(3) {
+            top: 35%;
+            left: -150px;
+            animation-delay: 8s;
+            opacity: 0.7;
+        }
+        
+        .cloud:nth-child(4) {
+            top: 35%;
+            left: -50px;
+            animation-delay: 8s;
+            opacity: 0.7;
+        }
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #f2f2f2 30%, #cccccc);
+            border-radius: 50%;
+            box-shadow: 0 0 20px 3px rgba(255, 255, 255, 0.8);
+        }
+        
+        .moon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            animation: moonGlow 2s infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            0% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes moonFloat {
+             0%, 100% {
+                 transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+                 }
+         }
+         .content {
+	 		 opacity: 0;
+	 		 transition: opacity 1s ease-in-out;
+		}
+
+		.content.show {
+	  		opacity: 1;
+		}
+		.button-container button {
+ 		   position: relative;	
+		    overflow: hidden;
+		    border: none;
+		    padding: 10px 20px;
+		    cursor: pointer;
+		}
+
+		.button-container button .ripple {
+		    position: absolute;
+		    border-radius: 50%;
+		    background: rgba(255, 255, 255, 0.4);
+		    transform: scale(0);
+		    animation: ripple 0.6s linear;
+		    pointer-events: none;
+		}
+
+		@keyframes ripple {
+		    to {
+		        transform: scale(4);
+		        opacity: 0;
+		    }
+		}
+         .moon {
+         	animation: moonFloat 5s ease-in-out infinite;
+         } 
+         #motivationMessage {
+  		  visibility: hidden; /* Ẩn phần tử nhưng vẫn giữ chỗ trong layout */
+    		opacity: 0;
+    		color: #F08080;
+    		font-size: 24px;
+    		margin-top: 20px;
+    		font-weight: bold;
+    		animation: fadeInOut 3s ease-in-out;
+		}
+
+		@keyframes fadeInOut {
+  		  0%, 100% { opacity: 0; visibility: hidden; }
+  		  50% { opacity: 1; visibility: visible; }
+		}
+
+		@keyframes fadeInZoom {
+  		  0% {
+  		      opacity: 0;
+  		      transform: scale(0.8);
+  		  }
+  		  100% {
+  		      opacity: 1;
+  		      transform: scale(1);
+  		  }
+		}
+		.button-container button:hover {
+		  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  		transform: scale(1.1);
+  		transition: all 0.3s ease;
+		}
+		.show {
+  		  opacity: 1; /* Khi thêm class 'show', opacity sẽ trở thành 1 */
+  		  visibility: visible; /* Hiển thị phần tử */
+  		  transition: opacity 0.5s ease, visibility 0s;
+		}
+
+		#thankYouMessage, #motivationMessage {
+  		  animation: fadeInZoom 0.5s ease-in-out;
+		}
+
+		#thankYouMessage {
+  		  visibility: hidden;
+  		  opacity: 0;
+  		  color: #A8DADC;
+  		  font-size: 24px;
+  		  margin-top: 20px;
+  		  font-weight: bold;
+		}
+
+		#motivationMessage.show, #thankYouMessage.show {
+  		  opacity: 1;
+  		  visibility: visible;
+		}
+    </style>
+</head>
+<body>
+    <h1>Chị có thể làm người yêu em không....💖</h1>
+    <div class="button-container">
+    <button id="yesButton">Đồng ý</button>
+    <button id="noButton">Không</button>
+    </div>
+    <div id="thankYouMessage">Cảm ơn chị đã đồng ý nhé!💝❤️</div>
+    <div id="motivationMessage">Em sẽ không bỏ cuộc đâu! 🥺</div>
+    <div class="moon"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        const motivationMessage = document.getElementById('motivationMessage');
+
+        // Danh sách các câu cảm ơn
+        const thankYouMessages = [
+            "Cảm ơn chị đã đồng ý nhé! 💝",
+            "Em rất hạnh phúc vì chị đã gật đầu! ❤️",
+            "Chị là người tuyệt vời nhất! 🥰",
+            "Em cảm động quá, cảm ơn chị! 💖",
+            "Chị làm em vui cả ngày! 😍",
+            "Cảm ơn chị đã đến với em☺️",
+            "Em sẽ mãi mãi bên chị!🤗",
+        ];
+
+        // Danh sách các câu động viên khi nhấn nút Không
+        const noMessages = [
+            "Không sao, em sẽ tiếp tục cố gắng! 💪",
+            "Chị không đồng ý cũng không sao, em sẽ chờ! 😌",
+            "Em tin rằng một ngày chị sẽ đồng ý! ❤️",
+            "Em sẽ làm chị hạnh phúc, cho em cơ hội nhé! 🥺",
+            "Dù thế nào, em vẫn thương chị! 💖",
+            "Một ngày không xa chị sẽ đổi ý, phải không? 😊",
+        ];
+
+        // Hàm lấy câu ngẫu nhiên
+        function getRandomMessage(messages) {
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+        const buttons = document.querySelectorAll('.button-container button');
+
+		buttons.forEach(button => {
+   	 button.addEventListener('click', function (event) {
+        // Lấy vị trí của sự kiện nhấp chuột
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+
+        // Tạo phần tử ripple
+        const ripple = document.createElement('div');
+        ripple.classList.add('ripple');
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+
+        // Thêm phần tử ripple vào nút
+        button.appendChild(ripple);
+
+        // Xóa phần tử ripple sau khi hiệu ứng hoàn thành
+        setTimeout(() => {
+            ripple.remove();
+    		    }, 600);
+    		});
+		});
+
+        // Xử lý khi nhấn nút Đồng ý
+        yesButton.addEventListener('click', () => {
+            thankYouMessage.textContent = getRandomMessage(thankYouMessages); // Đổi nội dung câu cảm ơn
+            thankYouMessage.classList.add('show'); // Thêm class để hiển thị
+            setTimeout(() => {
+                thankYouMessage.classList.remove('show'); // Loại bỏ class để ẩn
+            }, 3000); // Ẩn sau 3 giây
+        });
+
+        // Xử lý khi nhấn nút Không
+        noButton.addEventListener('click', () => {
+            noButton.style.transform = `translateX(${Math.random() * 200 - 100}px) translateY(${Math.random() * 200 - 100}px)`;
+            motivationMessage.textContent = getRandomMessage(noMessages); // Đổi nội dung câu động viên
+            motivationMessage.classList.add('show'); // Thêm class để hiển thị
+            setTimeout(() => {
+                motivationMessage.classList.remove('show'); // Loại bỏ class để ẩn
+            }, 3000); // Ẩn sau 3 giây
+        });
+
+        // Hiệu ứng ngôi sao
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * window.innerHeight + 'px';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 3000);
+        }
+
+        // Hiệu ứng sao băng
+        function createShootingStar() {
+            const shootingStar = document.createElement('div');
+            shootingStar.classList.add('shooting-star');
+            shootingStar.style.top = Math.random() * window.innerHeight + 'px';
+            shootingStar.style.left = Math.random() * window.innerWidth + 'px';
+            document.body.appendChild(shootingStar);
+
+            setTimeout(() => {
+                shootingStar.remove();
+            }, 2000);
+        }
+        setInterval(createStar, 200);
+        setInterval(createShootingStar, 200);
+    </script>
+</body>
+</html>
